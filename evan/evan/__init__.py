@@ -18,7 +18,7 @@ def run():
     gate = gate_class.GateGenerator(w1, w2)
 
     logging.debug('\n x1=%d\n x2=%d\n w1=%.2f\n w2=%.2f\n'%(x1, x2, w1, w2))
-    logging.debug('   AND(%d)  NAND(%d)  OR(%d)  XOR(%d)'%(gate.AND(x1, x2), gate.NAND(x1, x2), gate.OR(x1, x2), gate.XOR(x1, x2)))
+    logging.debug('   AND(%d)  NAND(%d)  OR(%d)   '%(gate.AND(x1, x2), gate.NAND(x1, x2), gate.OR(x1, x2)))
     logging.debug('======================================================')
 
 for i in range(0, limit):
