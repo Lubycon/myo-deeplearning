@@ -12,14 +12,12 @@ def run():
     x1 = random.randrange(0, 2)
     x2 = random.randrange(0, 2)
 
-    w1 = 1
-    w2 = 1
+    w1 = 0.5
+    w2 = 0.6
 
-    threshold = 1
+    gate = gate_class.GateGenerator(w1, w2)
 
-    gate = gate_class.GateGenerator(w1, w2, threshold)
-
-    logging.debug('\n x1=%d\n x2=%d\n w1=%f\n w2=%f\n threshold=%d'%(x1, x2, w1, w2, threshold))
+    logging.debug('\n x1=%d\n x2=%d\n w1=%.2f\n w2=%.2f\n'%(x1, x2, w1, w2))
     logging.debug('   AND(%d)  NAND(%d)  OR(%d)  XOR(%d)'%(gate.AND(x1, x2), gate.NAND(x1, x2), gate.OR(x1, x2), gate.XOR(x1, x2)))
     logging.debug('======================================================')
 
