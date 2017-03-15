@@ -8,4 +8,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 volt = filter_class.FilterClass('./data/volt.csv')
 
-print(volt.getData())
+print(volt.AverageFilter())
