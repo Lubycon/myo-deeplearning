@@ -6,6 +6,8 @@ import filter_class
 
 logging.basicConfig(level=logging.DEBUG)
 
-volt = filter_class.FilterClass('./data/volt.csv')
+# volt = filter_class.FilterClass('./data/volt.csv')
+# volt.averageFilter()
 
-print(volt.AverageFilter())
+sonar = filter_class.FilterClass('./data/sonar_alt.csv')
+sonar.movingAverageFilter(20)
