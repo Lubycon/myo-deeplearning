@@ -12,7 +12,7 @@
 #include <string>
 #include <myo/myo.hpp>
 #include <chrono>
-#include <time.h>
+#include <ctime>
 #include <fstream>
 
 enum {UNKNOWN, FIST, FINGERSPREAD, WAVEIN, WAVEOUT}MYOPOSE;
@@ -42,7 +42,7 @@ public:
 
 	void openFiles()
 	{
-		time_t timestamp = time(0);
+		time_t timestamp = std::time(0);
 		if (emgFile.is_open()) {
 			emgFile.close();
 		}
