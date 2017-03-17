@@ -65,9 +65,6 @@ class FilterClass:
                 queueAvg = (sum(queue, 0.0) / size) + ((firstVal * (size - len(queue))) / size)
                 tmp.append(queueAvg)
 
-        print data[0]
-        print data[1]
-        print tmp
-        plt.plot(data[0], data[1])
-        plt.plot(data[0], tmp, 'r')
+        plt.plot(data[0], data[1]) #Original Data
+        plt.plot(data[0], tmp, 'r') #Moving Average Data
         plt.show()
