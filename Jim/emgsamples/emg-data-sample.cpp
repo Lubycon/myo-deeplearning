@@ -180,7 +180,6 @@ public:
 		}
 		std::cout << std::endl;
         std::cout << std::flush;
-		
     }
 
     // The values of this array is set by onEmgData() above.
