@@ -42,6 +42,7 @@
 			default:
 				break;
 		}
+	}
 
 ##
 실질적인 값과 비교 후 값이 다를 경우에 임계값에 난수를 주어 일치하는 값이 나올때 까지 비교 (NAND의 경우에는 음의 가중치를 두게 함)
@@ -65,7 +66,7 @@
 
 ##
 
-![AND GATE](./Jim/img/and.JPG)
+![AND GATE](myodeeplearning/study/Jim/img/and.JPG)
 ![OR GATE](./Jim/img/OR.JPG)
 ![NAND GATE](./Jim/img/nand.JPG)
 
