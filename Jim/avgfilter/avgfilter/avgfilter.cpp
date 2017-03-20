@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 	std::ofstream m_avgFilter;
 	std::random_device rd;
 	std::mt19937 eng(rd());
-	std::uniform_real_distribution<double> dist(0, 10);
+	std::uniform_real_distribution<double> dist(0, 100);
 
 	time_t timestamp = std::time(0);
 	double avg = 0.0;
@@ -84,14 +84,14 @@ int main(int argc, char** argv)
 		if (avg_tick < 10)
 		{
 			avg = avgfilter(value, avg, valcnt);
-			avgFilter << avg_tick << ',' << avg << std::endl;
+			avgFilter << avg_tick << ',' << avg << ',' << value << std::endl;
 			avg_tick += 0.2;
 		}
 
 		if (m_avg_tick < 10)
 		{
 			m_avg = movingavgfilter(value, m_avg, &Q);
-			m_avgFilter << m_avg_tick << ',' << m_avg << std::endl;
+			m_avgFilter << m_avg_tick << ',' << m_avg << ',' << value << std::endl;
 			m_avg_tick += 0.02;
 		}
 				
