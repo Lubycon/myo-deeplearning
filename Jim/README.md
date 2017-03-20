@@ -1,1 +1,1 @@
-![AND GATE](Study/Jim/img/and.jpg)
+![AND GATE]("Study/Jim/img/and.jpg")
