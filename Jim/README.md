@@ -66,9 +66,9 @@
 
 ##
 
-![AND GATE](study/Jim/img/and.JPG)
-![OR GATE](./Jim/img/OR.JPG)
-![NAND GATE](./Jim/img/nand.JPG)
+![AND GATE](./img/and.JPG)
+![OR GATE](./img/OR.JPG)
+![NAND GATE](./img/nand.JPG)
 
 ##Filter
 ###Average Filter
@@ -86,7 +86,7 @@
 	return newfilter;
 	}
 
-![Average Filter](./Jim/img/avgfilter.png)
+![Average Filter](./img/avgfilter.png)
 ###Moving Average Filter
 STL 라이브러리 큐를 사용하여 구
 
@@ -115,4 +115,4 @@ STL 라이브러리 큐를 사용하여 구
 	return newfilter;
 	}
 
-![Moving Average Filter](./Jim/img/mavgfilter.png)
+![Moving Average Filter](./img/mavgfilter.png)
