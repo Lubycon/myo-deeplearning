@@ -67,7 +67,7 @@
 ##
 
 ![AND GATE](./img/and.JPG)
-![OR GATE](./img/OR.JPG)
+![OR GATE](./img/or.JPG)
 ![NAND GATE](./img/nand.JPG)
 
 ##Filter
@@ -88,7 +88,7 @@
 
 ![Average Filter](./img/avgfilter.png)
 ###Moving Average Filter
-STL 라이브러리 큐를 사용하여 구
+STL 라이브러리 큐를 사용하여 구현
 
 	double movingavgfilter(double newval, double prefilter, std::queue<double>* Q)
 	{
