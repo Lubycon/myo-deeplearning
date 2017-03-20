@@ -41,7 +41,7 @@ switch (gate)
 			default:
 				break;
 		}
-"'
+'"
 실 결과 값과 같은 값이 나오지 않을 경우 임계값 랜덤으로 변경
 "'
 for (int i = 0;i < 4;)
