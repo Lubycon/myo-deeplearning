@@ -1,1 +1,0 @@
-![AND GATE]("Study/Jim/img/and.jpg")
