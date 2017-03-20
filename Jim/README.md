@@ -66,7 +66,7 @@
 
 ##
 
-![AND GATE](myodeeplearning/study/Jim/img/and.JPG)
+![AND GATE](study/Jim/img/and.JPG)
 ![OR GATE](./Jim/img/OR.JPG)
 ![NAND GATE](./Jim/img/nand.JPG)
 
