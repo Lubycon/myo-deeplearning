@@ -10,4 +10,4 @@ logging.basicConfig(level=logging.DEBUG)
 # volt.averageFilter()
 
 sonar = filter_class.FilterClass('./data/sonar_alt.csv')
-sonar.movingAverageFilter(20)
+sonar.movingAverageFilter(50)
