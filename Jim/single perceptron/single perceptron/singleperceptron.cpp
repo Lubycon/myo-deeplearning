@@ -8,12 +8,12 @@ int main(int argc, char** argv)
 {
 	std::random_device rd;
 	std::mt19937 eng(rd());
-	std::normal_distribution<float> dist(-1, 1);
+	std::uniform_real_distribution<double> dist(-1, 1);
 
 	bool x1[4] = {0, 1, 0, 1};
 	bool x2[4] = { 0, 0, 1, 1 };
-	float threshold;
-	float w1, w2;
+	double threshold;
+	double w1, w2;
 	bool y[4];
 	bool output[4];
 	int gate = AND;
@@ -89,5 +89,5 @@ int main(int argc, char** argv)
 	}
 	
 	
-	
+	return 0;
 }
