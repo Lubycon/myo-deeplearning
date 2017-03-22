@@ -107,6 +107,7 @@ STL 라이브러리 큐를 사용하여 구현
 			sumval += tmpQ.front();
 			tmpQ.pop();
 		}
+
 		newfilter = sumval / SIZE;
 
 		if (Q->size() == SIZE)
