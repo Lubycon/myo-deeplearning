@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import logging
 
+import activation
+
 class GateGenerator:
     def __init__(self, w1, w2):
         self.w1 = w1
@@ -13,9 +15,10 @@ class GateGenerator:
         v2 = x2 * self.w2
         theta = max([v1, v2]) + 0.1
 
-        result = v1 + v2 > theta
+        func = activation.Activation(v1, v2, theta)
 
-        return 1 if result else 0
+        return func.step()
+
 
     def NAND(self, x1, x2):
         # the theta must be lower than min([x1, x2...,xn])
@@ -23,9 +26,9 @@ class GateGenerator:
         v2 = x2 * (self.w2 * -1)
         theta = min([v1, v2]) - 0.1
 
-        result = v1 + v2 > theta
+        func = activation.Activation(v1, v2, theta)
 
-        return 1 if result else 0
+        return func.step()
 
     def OR(self, x1, x2):
         # the theta must be 0
@@ -33,6 +36,6 @@ class GateGenerator:
         v2 = x2 * self.w2
         theta = 0;
 
-        result = v1 + v2 > theta
+        func = activation.Activation(v1, v2, theta)
 
-        return 1 if result else 0
+        return func.step()
