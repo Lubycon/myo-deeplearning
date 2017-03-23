@@ -45,9 +45,20 @@ class GateGenerator:
 
     def XOR(self, x1, x2):
         '''
+            ::logic
+            :INPUT x1, x2 ->
+            ==================
             x1 -> NAND, OR
             x2 -> NAND, OR
             NAND, OR -> AND
+            ==================
+            -> OUT
+
+            ::logic table
+                1 0 = 1
+                0 1 = 1
+                1 1 = 0
+                0 0 = 0
         '''
 
         x = np.array([x1, x2])

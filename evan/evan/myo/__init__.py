@@ -2,15 +2,18 @@ import os
 import sys
 import logging
 
-import filter_class
+import emg_class as emg
 
 logging.basicConfig(level=logging.DEBUG)
 
-# volt = filter_class.FilterClass('./data/volt.csv')
-# volt.averageFilter()
+fist = emg.EMGClass('./data/myo/emg-fist.csv')
+fist.getMAFilter(20)
 
-# sonar = filter_class.FilterClass('./data/sonar_alt.csv')
-# sonar.movingAverageFilter(50)
+spread = emg.EMGClass('./data/myo/emg-spread.csv')
+spread.getMAFilter(20)
 
-fist = filter_class.FilterClass('./data/myo/emg-fist.csv')
-fist.movingAverageFilter(40)
+wavein = emg.EMGClass('./data/myo/emg-wavein.csv')
+wavein.getMAFilter(20)
+
+waveout = emg.EMGClass('./data/myo/emg-waveout.csv')
+waveout.getMAFilter(20)
