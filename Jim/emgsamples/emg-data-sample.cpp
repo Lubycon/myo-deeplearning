@@ -161,6 +161,7 @@ public:
 		if (onArm)
 		{
 			std::string poseString = currentPose.toString();
+			std::cout << poseString << std::endl;
 			if (poseString == "fist")
 				MYOPOSE = FIST;
 			else if (poseString == "fingersSpread")
