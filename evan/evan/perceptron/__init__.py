@@ -5,6 +5,11 @@ import logging
 
 import gate_class as gc
 
+# TEST
+import numpy as np
+import matrix as mt
+# TEST
+
 logging.basicConfig(level=logging.DEBUG)
 limit = 100
 
@@ -22,5 +27,13 @@ def run():
     logging.debug('   AND(%d)  NAND(%d)  OR(%d)  XOR(%d)   '%(gate.AND(x1, x2), gate.NAND(x1, x2), gate.OR(x1, x2), gate.XOR(x1, x2)))
     logging.debug('======================================================')
 
-for i in range(0, limit):
-    run()
+# for i in range(0, limit):
+#     run()
+
+m1 = np.ones((3,3))
+m2 = np.eye(3)
+
+matrix = mt.MatrixClass(m1, m2)
+print('add =>', matrix.add())
+print('sub =>', matrix.sub())
+print('dot =>', matrix.dot())
