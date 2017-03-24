@@ -6,8 +6,8 @@ import csv
 
 import filter_class as ft
 
-import matplotlib as mpl
-import matplotlib.pylab as plt
+
+import matplotlib.pyplot as plt
 
 
 class EMGClass:
