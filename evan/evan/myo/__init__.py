@@ -6,14 +6,16 @@ import emg_class as emg
 
 logging.basicConfig(level=logging.DEBUG)
 
+filterSize = 10
+
 fist = emg.EMGClass('./data/myo/emg-fist.csv')
-fist.getMAFilter(20)
+fist.getMAFilter(filterSize)
 
 spread = emg.EMGClass('./data/myo/emg-spread.csv')
-spread.getMAFilter(20)
+spread.getMAFilter(filterSize)
 
 wavein = emg.EMGClass('./data/myo/emg-wavein.csv')
-wavein.getMAFilter(20)
+wavein.getMAFilter(filterSize)
 
 waveout = emg.EMGClass('./data/myo/emg-waveout.csv')
-waveout.getMAFilter(20)
+waveout.getMAFilter(filterSize)

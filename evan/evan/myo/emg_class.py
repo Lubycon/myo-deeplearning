@@ -57,7 +57,8 @@ class EMGClass:
             plt.plot(fData['origin'][0], fData['origin'][1]) # Original
             plt.plot(fData['filtered'][0], fData['filtered'][1], 'r') # Filtered
             plt.plot(time, gesture, 'y') # Gesture
-
+            plt.ylim(-128, 128)
+            plt.xlim(len(time))
             plt.plot(time, gesture)
 
         plt.show()
