@@ -6,10 +6,10 @@ import emg_class as emg
 
 logging.basicConfig(level=logging.DEBUG)
 
-filterSize = 10
+filterSize = 20
 
 # DATA LINK START
-dataRoot = './data/myo/'
+dataRoot = '/Users/evan/Dev/myo/study/data/myo/'
 dataDic = {
     'fist': dataRoot + 'sEMGsamples(fist)-1490341225.csv',
     'spread': dataRoot + 'sEMGsamples(spread)-1490341323.csv',

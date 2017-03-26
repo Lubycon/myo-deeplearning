@@ -3,9 +3,8 @@
 import os
 import sys
 import csv
-
+import numpy as np
 import filter_class as ft
-
 
 import matplotlib.pyplot as plt
 
@@ -41,6 +40,11 @@ class EMGClass:
 
         gesture = data.pop(-1)
         gesture.pop(0)
+
+        customGesture = np.zeros(len(time))
+
+        sensitive = 25
+
         for i,v in enumerate(gesture):
             gesture[i]  = float(v) * 50
 
@@ -52,14 +56,20 @@ class EMGClass:
             f = ft.FilterClass(time, v, title)
             fData = f.getMAData(size)
 
+            for j,vv in enumerate(fData['filtered'][1]):
+                if vv >= sensitive:
+                    customGesture[j] = 1 * 50
+
+
             plt.subplot(4, 2, i + 1)
             plt.title(title + '(size: ' + str(size) + ')')
             plt.plot(fData['origin'][0], fData['origin'][1]) # Original
             plt.plot(fData['filtered'][0], fData['filtered'][1], 'r') # Filtered
             plt.plot(time, gesture, 'y') # Gesture
-            plt.ylim(0, 256)
+            plt.ylim(0, 128)
             plt.xlim(len(time))
             plt.plot(time, gesture)
+            plt.plot(time, customGesture, 'c')
 
         plt.show()
 
