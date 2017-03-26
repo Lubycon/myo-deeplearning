@@ -6,6 +6,7 @@ class MatrixClass:
         self.m2 = m2
 
     def dot(self):
+        # it will be changed to strassen algorithm
         m1 = self.m1
         m2 = self.m2
 
