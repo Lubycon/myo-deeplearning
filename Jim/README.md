@@ -162,6 +162,8 @@ STL 라이브러리 큐를 사용하여 구현
 ![XOR LOGIC](./img/xor_gate.jpg)
 ####레이어를 그렸을 때는 다음과 같다.(아마도....)
 ![XOR LAYER](./img/xor_layer.jpg)
+
+
 솔직히 맞는지 잘 모르겠다....
 
 Activation Function(Step)과 행렬 곱을 구현한 코드
