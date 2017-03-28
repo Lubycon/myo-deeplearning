@@ -6,21 +6,21 @@
 class Filter{
 private:
 	int SIZE;
-	double prefilter;
-	double pre_front;
+	double prefilter[8];
+	double pre_front[8];
 public:
 	Filter(int size);
-	double movingavgfilter(int newval, std::queue<int>* Q);
+	double movingavgfilter(int newval, std::queue<int>* Q, int idx);
 };
 
 Filter::Filter(int size)
 {
-	pre_front = 0;
-	prefilter = 0;
+	memset(prefilter, 0, sizeof(prefilter));
+	memset(pre_front, 0, sizeof(pre_front));
 	SIZE = size;
 }
 
-double Filter::movingavgfilter(int newval, std::queue<int>* Q)
+double Filter::movingavgfilter(int newval, std::queue<int>* Q, int idx)
 {
 	double newfilter = 0.0;
 	int sumval = 0;
@@ -35,7 +35,7 @@ double Filter::movingavgfilter(int newval, std::queue<int>* Q)
 		while (Q->size() != SIZE)
 			Q->push(newval);
 	tmpQ = *Q;
-	if (!prefilter)
+	if (!prefilter[idx])
 	{
 		while (!tmpQ.empty())
 		{
@@ -45,15 +45,15 @@ double Filter::movingavgfilter(int newval, std::queue<int>* Q)
 		newfilter = sumval / (double)SIZE;
 	}
 	else
-		newfilter = prefilter + (newval - pre_front) / (double)SIZE;
+		newfilter = prefilter[idx] + (newval - pre_front[idx]) / SIZE;
 
 
 	
-	pre_front = Q->front();
+	pre_front[idx] = Q->front();
 	Q->pop();
 
 
-	prefilter = newfilter;
+	prefilter[idx] = newfilter;
 	//*/
 	/*
 	Q->push(newval);
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 	if (inFile.is_open()) {
 		inFile.close();
 	}
-	inFile.open("C:\\Users\\gjwla\\Documents\\GitHub\\study\\data\\myo\\sEMGsamples(wavein)-1490341362.csv", std::ios::in);
+	inFile.open("C:\\Users\\gjwla\\Documents\\GitHub\\study\\data\\myo\\sEMGsamples(waveout)-1490341675.csv", std::ios::in);
 	while (inFile.get(delim))
 		if (delim == '\n')
 			break;
@@ -103,7 +103,7 @@ int main(int argc, char** argv)
 		for (int i = 0;i < 8;i++)
 		{
 			inFile >> tmpemg[i] >> delim;
-			RMSemgQ[i].push(filter.movingavgfilter(tmpemg[i], &emgQ[i]));
+			RMSemgQ[i].push(filter.movingavgfilter(tmpemg[i], &emgQ[i], i));
 		}
 		inFile >> tmplabel;
 
@@ -116,7 +116,7 @@ int main(int argc, char** argv)
 	if (outFile.is_open()) {
 		outFile.close();
 	}
-	outFile.open("sEMGsamples(wavein)-1490341362RMS.csv", std::ios::out);
+	outFile.open("sEMGsamples(waveout)-1490341675RMS.csv", std::ios::out);
 	
 	while (!msQ.empty())
 	{
