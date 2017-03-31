@@ -25,7 +25,6 @@ def run():
 def getError():
     test = er.ErrorRateClass('data/error/error_data.csv')
     print test.getErrorRate()
-    test.renderChart()
 
 getError()
 # for i in range(0, limit):

@@ -34,7 +34,7 @@ class ErrorRateClass:
         plt.show()
 
     def getErrorRate(self):
-        result = 0
+        result = 0.0
         for i,v in enumerate(self.data):
             result += ((self.answer[i] - self.data[i])**2)
 
