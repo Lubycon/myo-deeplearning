@@ -13,6 +13,8 @@ class MatrixClass:
         m1Size = self.sizeCal(m1)
         m2Size = self.sizeCal(m2)
 
+        print('!', m1, m2)
+
         if self.sizeMatchValidator(m1, m2, 'dot') != True:
             return 'Matrix size Error'
 

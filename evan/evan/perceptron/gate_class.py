@@ -13,32 +13,32 @@ class GateGenerator:
 
 
     def AND(self, x1, x2):
-        x = np.array([x1, x2])
-        w = np.array([self.w1, self.w2])
+        x = np.array([[x1, x2]])
+        w = np.array([[self.w1], [self.w2]])
         b = -0.7
 
-        tmp = np.sum(x*w) + b
+        tmp = np.dot(x, w)[0][0] + b
         func = actv.Activation(tmp)
 
         return func.step()
 
 
     def NAND(self, x1, x2):
-        x = np.array([x1, x2])
-        w = np.array([self.w1 * -1, self.w2 * -1])
+        x = np.array([[x1, x2]])
+        w = np.array([[self.w1 * -1], [self.w2 * -1]])
         b = 0.7
 
-        tmp = np.sum(x*w) + b
+        tmp = np.dot(x, w)[0][0] + b
         func = actv.Activation(tmp)
 
         return func.step()
 
     def OR(self, x1, x2):
-        x = np.array([x1, x2])
-        w = np.array([self.w1, self.w2])
+        x = np.array([[x1, x2]])
+        w = np.array([[self.w1], [self.w2]])
         b = 0
 
-        tmp = np.sum(x*w) + b
+        tmp = np.dot(x, w) + b
         func = actv.Activation(tmp)
 
         return func.step()
@@ -60,9 +60,7 @@ class GateGenerator:
                 1 1 = 0
                 0 0 = 0
         '''
-
-        x = np.array([x1, x2])
-
+        
         v1 = self.OR(x1, x2)
         v2 = self.NAND(x1, x2)
 
