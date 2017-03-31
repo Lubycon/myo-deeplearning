@@ -4,6 +4,7 @@ import sys
 import logging
 
 import gate_class as gc
+import error_rate as er
 
 logging.basicConfig(level=logging.DEBUG)
 limit = 100
@@ -21,5 +22,11 @@ def run():
     logging.debug('   AND(%d)  NAND(%d)  OR(%d)  XOR(%d)   '%(gate.AND(x1, x2), gate.NAND(x1, x2), gate.OR(x1, x2), gate.XOR(x1, x2)))
     logging.debug('======================================================')
 
-for i in range(0, limit):
-    run()
+def getError():
+    test = er.ErrorRateClass('data/error/error_data.csv')
+    print test.getErrorRate()
+    test.renderChart()
+
+getError()
+# for i in range(0, limit):
+#     run()
