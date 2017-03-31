@@ -7,12 +7,12 @@
 #include <cmath>
 #include <array>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include <myo/myo.hpp>
 #include <chrono>
-#include <ctime>
 #include <fstream>
 
 enum {UNKNOWN, FIST, FINGERSPREAD, WAVEIN, WAVEOUT}MYOPOSE;
@@ -42,12 +42,11 @@ public:
 
 	void openFiles()
 	{
-		time_t timestamp = std::time(0);
 		if (emgFile.is_open()) {
 			emgFile.close();
 		}
 		std::ostringstream emgFileString;
-		emgFileString << "sEMGsamples-" << timestamp << ".csv";
+		emgFileString << "sEMGsamples-3week.csv";
 		emgFile.open(emgFileString.str(), std::ios::out);
 		emgFile << "millis,emg1,emg2,emg3,emg4,emg5,emg6,emg7,emg8,gesture";
 	}
@@ -149,7 +148,7 @@ public:
         // Clear the current line
 		emgFile << std::endl;
 		emgFile << mill.count();
-
+		std::cout << std::setfill(' ') << std::setw(10) << mill.count();
         // Print out the EMG data.
         for (size_t i = 0; i < emgSamples.size(); i++) {
             std::ostringstream oss;
@@ -157,11 +156,11 @@ public:
             std::string emgString = oss.str();
 
             emgFile << ',' << emgString;
+			std::cout << ", " << std::setfill(' ') << std::setw(5) << emgString;
         }
 		if (onArm)
 		{
 			std::string poseString = currentPose.toString();
-			std::cout << poseString << std::endl;
 			if (poseString == "fist")
 				MYOPOSE = FIST;
 			else if (poseString == "fingersSpread")
@@ -173,6 +172,7 @@ public:
 			else
 				MYOPOSE = UNKNOWN;
 			emgFile << ',' << MYOPOSE;
+			std::cout << ", " << poseString;
 		}
 		else
 		{
