@@ -49,6 +49,13 @@ bool Layer::step_h(int bool_idx)
 	return matrix_product(bool_idx) > 0 ? 1 : 0;
 }
 
+bool Layer::sigmoid(long double val)
+{
+	double result = 1 / (1 + exp(-val));
+
+	return result >= 0.5 ? 1 : 0;
+}
+
 double Layer::sigmoid(double val)
 {
 	return 1 / (1 + exp(-val));

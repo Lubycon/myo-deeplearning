@@ -14,6 +14,7 @@ public:
 	int Layer_level;
 	bool step_h(int bool_idx);
 	double sigmoid(double val);
+	bool sigmoid(long double val);
 	void print_activation(int n);
 	void transpose();
 	double matrix_product(int bool_idx);
