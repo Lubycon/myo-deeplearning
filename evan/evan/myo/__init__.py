@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import sys
 import logging
@@ -9,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 filterSize = 20
 
 # DATA LINK START
-dataRoot = '/Users/evan/Dev/myo/study/data/myo/'
+dataRoot = 'data/myo/'
 dataDic = {
     'fist': dataRoot + 'sEMGsamples(fist)-1490341225.csv',
     'spread': dataRoot + 'sEMGsamples(spread)-1490341323.csv',
