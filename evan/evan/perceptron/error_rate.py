@@ -3,6 +3,7 @@
 import os
 import sys
 import csv
+import math
 
 import numpy as np
 
@@ -33,9 +34,16 @@ class ErrorRateClass:
 
         plt.show()
 
-    def getErrorRate(self):
+    def getMSE(self):
         result = 0.0
         for i,v in enumerate(self.data):
             result += ((self.answer[i] - self.data[i])**2)
 
-        return result**0.5
+        return result * 0.5
+
+    def getCEE(self):
+        result = 0.0
+        for i,v in enumerate(self.data):
+            result += (self.data[i] * math.log(self.answer[i]))
+
+        return result * -1;

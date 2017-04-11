@@ -23,8 +23,9 @@ def run():
     logging.debug('======================================================')
 
 def getError():
-    test = er.ErrorRateClass('data/error/error_data.csv')
-    print test.getErrorRate()
+    ErrorCatcher = er.ErrorRateClass('data/error/error_data.csv')
+    print('MSE : ', ErrorCatcher.getMSE())
+    print('CEE : ', ErrorCatcher.getCEE())
 
 getError()
 # for i in range(0, limit):
