@@ -1,4 +1,4 @@
-#INDEX
+#1주차
 ----
 ###1. Single Layer Perceptron
 ###2. Filter
@@ -117,3 +117,142 @@ STL 라이브러리 큐를 사용하여 구현
 	}
 
 ![Moving Average Filter](./img/mavgfilter.png)
+
+
+
+
+#2주차
+----
+###1. Multi Layer Perceptron (XOR Gate)
+###2. Moving Average Filter Recursive
+----
+##Multi Layer Perceptron (XOR Gate)
+논리식 클래스와 레이어 클래스 2가지
+
+	enum {AND, OR, NAND, XOR}GATE;
+
+	class Logic_Gate{	
+	private:
+		bool Expected_val[4];
+		std::string gate_str;
+	
+	public:
+		bool _isexpect(bool output[4], int idx);
+		void select_gate(int gate);
+		void print_gate();
+		int gate;
+	};
+	
+	class Layer{
+	public:
+		Layer();
+		double w[2][2];
+		bool x[2][4];
+		bool y[2][4];
+		int y_idx;
+		int Layer_level;
+		bool step_h(int bool_idx);
+		void print_step();
+	};
+
+
+####결과값
+![XOR GATE](./img/xor.jpg)
+####아래와 같은 논리식으로 XOR을 구현
+![XOR LOGIC](./img/xor_gate.jpg)
+####레이어를 그렸을 때는 다음과 같다.(아마도....)
+![XOR LAYER](./img/xor_layer.jpg)
+
+
+솔직히 맞는지 잘 모르겠다....
+
+Activation Function(Step)과 행렬 곱을 구현한 코드
+
+	bool Layer::step_h(int bool_idx)
+	{
+		std::random_device rd;
+		std::mt19937 eng(rd());
+		std::uniform_real_distribution<double> dist(-0.3, 0.3);
+		int row = sizeof(x) / sizeof(x[0]);
+		double a = 0;
+		double b = dist(eng);
+		for (int i = 0; i < row;i++)
+			a += w[y_idx][i] * x[i][bool_idx];
+		a += b;
+		return a > 0 ? 1 : 0;
+	}
+
+
+##Moving Average Filter Recursive
+필터값 = 이전 필터값 + (큐에 들어온 값 - 디큐되기전 큐 가장 위에 있던 값) / 사이즈
+
+새로 추출한 sEMG데이터를 기반으로 RMS를 평균이동필터로 구현하였다.
+
+	class Filter{
+	private:
+		int SIZE;
+		double prefilter[8];
+		double pre_front[8];
+	public:
+		Filter(int size);
+		double movingavgfilter(int newval, std::queue<int>* Q, int idx);
+	};
+
+	Filter::Filter(int size)
+	{
+		memset(prefilter, 0, sizeof(prefilter));
+		memset(pre_front, 0, sizeof(pre_front));
+		SIZE = size;
+	}
+
+	double Filter::movingavgfilter(int newval, std::queue<int>* Q, int idx)
+	{
+		double newfilter = 0.0;
+		int sumval = 0;
+		std::queue<int> tmpQ;
+	
+		if (newval < 0)
+			newval *= -1;
+
+		Q->push(newval);
+	
+		if (Q->size() != SIZE)
+			while (Q->size() != SIZE)
+				Q->push(newval);
+		tmpQ = *Q;
+		if (!prefilter[idx])
+		{
+			while (!tmpQ.empty())
+			{
+				sumval += tmpQ.front();
+				tmpQ.pop();
+			}
+			newfilter = sumval / (double)SIZE;
+		}
+		else
+			newfilter = prefilter[idx] + (newval - pre_front[idx]) / SIZE;
+
+
+	
+		pre_front[idx] = Q->front();
+		Q->pop();
+
+
+		prefilter[idx] = newfilter;
+
+	
+		return newfilter;
+	}
+
+
+####FIST
+![RMS FIST](./img/fistrms.png)
+
+####SPREAD
+![RMS SPREAD](./img/spreadrms.png)
+
+####WAVE IN
+![RMS WAVEIN](./img/waveinrms.png)
+
+####WAVE OUT
+![RMS WAVEOUT](./img/waveoutrms.png)
