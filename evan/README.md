@@ -111,16 +111,16 @@ def averageFilter(self):
 
     for i, v in enumerate(data[1]):
         newAvg = v * (1/(len(tmp) + 1))
-        #새로운 데이터사마의 입장
-        #전체 1/(tmp + 1)에 새로운 데이터사마를 곱해준다
-        #그러면 새로운 데이터사마가 tmp리스트에 들어갔을 때의 평균 값이 나온다 ><
+        #새로운 데이터의 입장
+        #전체 1/(tmp + 1)에 새로운 데이터를 곱해준다
+        #그러면 새로운 데이터가 tmp리스트에 들어갔을 때의 평균 값이 나온다
         if len(tmp) > 0:
             newAvg = tmp[-1] * (len(tmp) / (len(tmp) + 1))
             newAvg += (v * (1 / (len(tmp) + 1)))
         tmp.append(newAvg)
         #tmp[-1]은 마지막으로 계산했던 평균값이다.
         #여기에 (지금길이 / 새로운 데이터님이 입장하신 후 길이)를 곱해준다
-        #그 다음에 걍 더한 후 tmp의 똥꾸녕으로 처넣어준다
+        #그 다음에 걍 더한 후 tmp의 tail로 넣어준다
 
     plt.plot(data[0], data[1]) #Original Data
     plt.plot(data[0], tmp, 'r') #Average Data
@@ -140,19 +140,19 @@ def movingAverageFilter(self, size):
 
     for i, v in enumerate(data[1]):
         queue.append(v)
-        #새로운 데이터사마의 입장과 동시에 일단 큐에 처넣어준다
+        #새로운 데이터의 입장과 동시에 일단 큐에 넣어준다
         if(len(queue) == size):
             queueAvg = sum(queue, 0.0) / size
             queue.pop(0)
             tmp.append(queueAvg)
             #queue가 가득 찼다면 평균을 내준다
-            #이제 필요없어진 queue의 대가리를 차분하게 똑 따준다
-            #tmp의 똥꾸녕으로 평균값을 처넣어준다
+            #이제 필요없어진 queue의 머리를 차분하게 똑 따준다
+            #tmp의 tail로 평균값을 넣어준다
         else:
             queueAvg = (sum(queue, 0.0) / size) + ((firstVal * (size - len(queue))) / size)
             tmp.append(queueAvg)
-            #queue가 가득 차지 않았다면 새로운 데이터 사마를 제외한 모든 값을 첫번째 데이터의 값으로 채워준다
-            #그 다음 침착하게 평균을 낸 후 tmp의 똥꾸녕으로 처넣어준다
+            #queue가 가득 차지 않았다면 새로운 데이터를 제외한 모든 값을 첫번째 데이터의 값으로 채워준다
+            #그 다음 침착하게 평균을 낸 후 tmp의 tail로 넣어준다
 
     plt.plot(data[0], data[1]) #Original Data
     plt.plot(data[0], tmp, 'r') #Moving Average Data
