@@ -162,17 +162,17 @@ def movingAverageFilter(self, size):
 
 ### RESULT
 1. Average Filter
-![averageFilter]('./img/average_filter.png')
+![averageFilter](./img/average_filter.png)
 2. Moving Average Filter
 
 사이즈가 커질 수록 노이즈가 없어져 그래프가 완만해지고
 레이턴시가 심해지는 모습을 보인다.
 
 size = 50
-![moving50]('./img/50.png')
+![50](./img/50.png)
 size = 20
-![moving20]('./img/20.png')
+![moving20](./img/20.png)
 size = 10
-![moving10]('./img/10.png')
+![moving10](./img/10.png)
 size = 5
-![moving5]('./img/5.png')
+![moving5](./img/5.png)
